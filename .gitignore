@@ -4,3 +4,4 @@ LlamaEngine/Debug/*
 LlamaEngine/Release/*
 Debug/*
 Release/*
+.vcxproj.user
