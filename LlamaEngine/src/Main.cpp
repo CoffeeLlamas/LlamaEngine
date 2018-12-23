@@ -1,7 +1,11 @@
 #include <iostream>
 #include <gl/glew.h>
 #include <GLFW/glfw3.h>
+#include "graphics/Shader.hpp"
 int main() {
+	using namespace engine;
+	using namespace graphics;
+
 	if (!glfwInit()) {
 		std::cout << "Failed to initialise GLFW" << std::endl;
 		return -1;
@@ -17,6 +21,9 @@ int main() {
 		std::cout << "Failed to initialise GLEW" << std::endl;
 		return -1;
 	}
+
+	Shader* shader = new Shader("res/shader/Basic.glsl");
+	shader->bind();
 
 	while (!glfwWindowShouldClose(window)) {
 		glClearColor(1, 1, 1, 1);
