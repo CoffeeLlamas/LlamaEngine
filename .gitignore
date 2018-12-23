@@ -1,0 +1,6 @@
+.vs
+.git
+LlamaEngine/Debug/*
+LlamaEngine/Release/*
+Debug/*
+Release/*
