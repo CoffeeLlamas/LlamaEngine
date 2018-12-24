@@ -10,6 +10,7 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\graphics\Shader.cpp" />
+    <ClCompile Include="src\graphics\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shader\Basic.glsl" />
