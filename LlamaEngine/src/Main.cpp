@@ -1,7 +1,7 @@
 #include <iostream>
 #include <gl/glew.h>
 #include <GLFW/glfw3.h>
-#include "graphics/Window.hpp"
+#include "graphics/Shader.hpp"
 
 int main() {
 	using namespace engine;
@@ -13,7 +13,8 @@ int main() {
 		system("PAUSE");
 		return -1;
 	}
-	
+	Shader* shader = new Shader("res/shader/Basic.glsl");
+	shader->bind();
 
 	while (!window->ShouldClose()) {
 		glClearColor(1, 1, 1, 1);
