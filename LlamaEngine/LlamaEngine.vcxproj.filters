@@ -11,11 +11,15 @@
     </ClCompile>
     <ClCompile Include="src\graphics\Shader.cpp" />
     <ClCompile Include="src\graphics\Window.cpp" />
+    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\math\Vector3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shader\Basic.glsl" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\graphics\Shader.hpp" />
+    <ClInclude Include="src\graphics\Window.hpp" />
+    <ClInclude Include="src\math\Vector3.hpp" />
   </ItemGroup>
 </Project>
