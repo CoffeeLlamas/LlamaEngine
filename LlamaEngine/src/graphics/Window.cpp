@@ -27,6 +27,9 @@ namespace engine {
 
 			glfwMakeContextCurrent(m_Window);
 			glfwSwapInterval(1);
+			glfwSetWindowUserPointer(m_Window, this);
+
+			m_Input = new Input(m_Window);
 		}
 
 		Window::~Window() {
@@ -34,7 +37,9 @@ namespace engine {
 			glfwTerminate();
 		}
 
-		void Window::Update() const {
+		void Window::Update() {
+			m_Now = glfwGetTime();
+
 			glfwSwapBuffers(m_Window);
 			glfwPollEvents();
 		}
