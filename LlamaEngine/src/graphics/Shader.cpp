@@ -9,13 +9,13 @@ namespace engine {
 	namespace graphics {
 
 		Shader::Shader(const char* file) : Shader(Shader::parse(Shader::read(file))) { }
-		Shader::Shader(ShaderSource sources) {
+		Shader::Shader(ShaderSource* source) {
 			this->program = glCreateProgram();
 			unsigned int vertex = glCreateShader(GL_VERTEX_SHADER);
 			unsigned int fragment = glCreateShader(GL_FRAGMENT_SHADER);
 
-			Shader::compile(vertex, sources.vertex.c_str());
-			Shader::compile(fragment, sources.fragment.c_str());
+			Shader::compile(vertex, source->vertex.c_str());
+			Shader::compile(fragment, source->fragment.c_str());
 
 			glAttachShader(this->program, vertex);
 			glAttachShader(this->program, fragment);
@@ -32,6 +32,7 @@ namespace engine {
 
 			glDeleteShader(vertex);
 			glDeleteShader(fragment);
+			delete source;
 		}
 
 		std::string Shader::read(const char* file) {
@@ -44,7 +45,7 @@ namespace engine {
 			return contents.str();
 		}
 
-		ShaderSource Shader::parse(std::string contents) {
+		ShaderSource* Shader::parse(std::string contents) {
 			std::istringstream stuff(contents);
 			std::stringstream shaders[2];
 			std::string line;
@@ -58,7 +59,7 @@ namespace engine {
 					shaders[mode] << line << std::endl;
 			}
 
-			return {
+			return new ShaderSource {
 				shaders[0].str(),
 				shaders[1].str()
 			};

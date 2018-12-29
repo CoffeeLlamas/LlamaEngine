@@ -2,6 +2,7 @@
 #include <gl/glew.h>
 #include <GLFW/glfw3.h>
 #include "graphics/Shader.hpp"
+#include "graphics/Window.hpp"
 
 int main() {
 	using namespace engine;
@@ -23,6 +24,7 @@ int main() {
 		window->Update();
 	}
 	
+	delete shader;
 	delete(window);
 	system("PAUSE");
 }
