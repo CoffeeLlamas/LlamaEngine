@@ -19,17 +19,24 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\audio\Audio.cpp" />
+    <ClCompile Include="src\audio\AudioLoader.cpp" />
+    <ClCompile Include="src\audio\AudioData.hpp" />
+    <ClCompile Include="src\audio\AudioSource.cpp" />
     <ClCompile Include="src\graphics\Window.cpp" />
     <ClCompile Include="src\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\audio\Audio.hpp" />
+    <ClInclude Include="src\audio\AudioLoader.hpp" />
+    <ClInclude Include="src\audio\AudioSource.hpp" />
     <ClInclude Include="src\graphics\Window.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{5C1689FB-076F-4570-AE77-3DA535351A4D}</ProjectGuid>
     <RootNamespace>LlamaEngine</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -83,12 +90,12 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Deps\GLFW\include;$(SolutionDir)Deps\GLEW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Deps\GLFW\include;$(SolutionDir)Deps\GLEW\include;$(SolutionDir)Deps\OpenAL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>GLEW_STATIC;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>GLFW3.lib;opengl32.lib;User32.lib;Gdi32.lib;Shell32.lib;glew32s.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)Deps\GLFW\lib-vc2015;$(SolutionDir)Deps\GLEW\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>GLFW3.lib;opengl32.lib;User32.lib;Gdi32.lib;Shell32.lib;glew32s.lib;OpenAL32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Deps\GLFW\lib-vc2015;$(SolutionDir)Deps\GLEW\lib\Release\Win32;$(SolutionDir)Deps\OpenAL\lib\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -107,14 +114,14 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Deps\GLFW\include;$(SolutionDir)Deps\GLEW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Deps\GLFW\include;$(SolutionDir)Deps\GLEW\include;$(SolutionDir)Deps\OpenAL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>GLEW_STATIC;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>GLFW3.lib;opengl32.lib;User32.lib;Gdi32.lib;Shell32.lib;glew32s.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)Deps\GLFW\lib-vc2015;$(SolutionDir)Deps\GLEW\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>GLFW3.lib;opengl32.lib;User32.lib;Gdi32.lib;Shell32.lib;glew32s.lib;OpenAL32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Deps\GLFW\lib-vc2015;$(SolutionDir)Deps\GLEW\lib\Release\Win32;$(SolutionDir)Deps\OpenAL\lib\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -140,6 +147,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shader\Basic.glsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="res\audio\Guitar.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

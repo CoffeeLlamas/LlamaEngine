@@ -11,11 +11,24 @@
     </ClCompile>
     <ClCompile Include="src\graphics\Shader.cpp" />
     <ClCompile Include="src\graphics\Window.cpp" />
+    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\audio\AudioLoader.cpp" />
+    <ClCompile Include="src\audio\Audio.cpp" />
+    <ClCompile Include="src\audio\AudioData.hpp" />
+    <ClCompile Include="src\audio\AudioSource.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shader\Basic.glsl" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\graphics\Shader.hpp" />
+    <ClInclude Include="src\graphics\Window.hpp" />
+    <ClInclude Include="src\audio\AudioLoader.hpp" />
+    <ClInclude Include="src\audio\Audio.hpp" />
+    <ClInclude Include="src\audio\AudioSource.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="res\audio\Guitar.wav" />
   </ItemGroup>
 </Project>
