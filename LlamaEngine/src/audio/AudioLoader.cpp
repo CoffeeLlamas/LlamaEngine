@@ -1,18 +1,22 @@
 #include "AudioLoader.hpp"
 #include <fstream>
-#include <iostream>
+#include <AL/al.h>
 namespace engine {
 	namespace audio {
 
-		static int bitsToDecimal(char* data, int pointer, int amt);
+		static int bitsToDecimal(char* data, int pointer, int amt) {
+			int a = 0;
+			for (int i = 0; i < amt; i++)
+				((char*)&a)[i] = data[pointer + i];
 
-		long long len;
+			return a;
+		}
+		
 		AudioData* AudioLoader::loadWAVFile(const char* file) {
 			std::ifstream stream(file);
 			stream.seekg(0, stream.end);
 			long long length = stream.tellg();
 			stream.seekg(0, stream.beg);
-			len = length;
 
 			char* data = new char[length];
 			stream.read(data, length);
@@ -38,16 +42,19 @@ namespace engine {
 			};
 		}
 
-		static int bitsToDecimal(char* data, int pointer, int amt) {
-
-			int a = 0, b = 1;
-			if (((char*)&b)[0]) // If little-endian
-				for (int i = 0; i < amt; i++)
-					((char*)&a)[i] = data[pointer + i];
-			else
-				for (int i = 0; i < amt; i++)
-					((char*)&a)[3 - i] = data[pointer + i];
-			return a;
+		unsigned int AudioLoader::getFormat(AudioData* data) {
+			if (data->channels == 1) {
+				if (data->bitsPerSample == 8)
+					return AL_FORMAT_MONO8;
+				else
+					return AL_FORMAT_MONO16;
+			}
+			else {
+				if (data->bitsPerSample == 8)
+					return AL_FORMAT_STEREO8;
+				else
+					return AL_FORMAT_STEREO16;
+			}
 		}
 
 	}

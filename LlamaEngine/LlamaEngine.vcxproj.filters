@@ -17,9 +17,12 @@
     <ClCompile Include="src\audio\Audio.cpp" />
     <ClCompile Include="src\audio\AudioData.hpp" />
     <ClCompile Include="src\audio\AudioSource.cpp" />
+    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shader\Basic.glsl" />
+    <None Include="res\audio\fire.ogg" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\graphics\Shader.hpp" />
@@ -27,6 +30,7 @@
     <ClInclude Include="src\audio\AudioLoader.hpp" />
     <ClInclude Include="src\audio\Audio.hpp" />
     <ClInclude Include="src\audio\AudioSource.hpp" />
+    <ClInclude Include="src\audio\Common.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="res\audio\Guitar.wav" />

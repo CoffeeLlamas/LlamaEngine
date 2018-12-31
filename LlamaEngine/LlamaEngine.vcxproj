@@ -30,6 +30,7 @@
     <ClInclude Include="src\audio\Audio.hpp" />
     <ClInclude Include="src\audio\AudioLoader.hpp" />
     <ClInclude Include="src\audio\AudioSource.hpp" />
+    <ClInclude Include="src\audio\Common.hpp" />
     <ClInclude Include="src\graphics\Window.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -146,6 +147,7 @@
     <ClInclude Include="src\graphics\Shader.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\audio\fire.ogg" />
     <None Include="res\shader\Basic.glsl" />
   </ItemGroup>
   <ItemGroup>

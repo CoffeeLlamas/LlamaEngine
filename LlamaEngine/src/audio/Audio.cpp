@@ -2,6 +2,7 @@
 #include <AL/al.h>
 #include <AL/alc.h>
 #include <iostream>
+#include "AudioLoader.hpp"
 namespace engine {
 	namespace audio {
 
@@ -24,32 +25,19 @@ namespace engine {
 		}
 
 		Audio::Audio(AudioData* data) {
-			unsigned int format;
 			alGenBuffers(1, &this->id);
 
 			unsigned int error = alGetError();
-			if (error != AL_NO_ERROR)
+			if (error != AL_NO_ERROR) {
 				std::cout << "[OpenAL] buffer creation error " << error << std::endl;
-
-			if (data->channels == 1) {
-				if (data->bitsPerSample == 8)
-					format = AL_FORMAT_MONO8;
-				else
-					format = AL_FORMAT_MONO16;
-			} else {
-				if (data->bitsPerSample == 8)
-					format = AL_FORMAT_STEREO8;
-				else
-					format = AL_FORMAT_STEREO16;
+				return;
 			}
 
-			alBufferData(this->id, format, data->data, data->size, data->sampleRate);
+			alBufferData(this->id, AudioLoader::getFormat(data), data->data, data->size, data->sampleRate);
 			this->source = data;
 		}
 
 		Audio::~Audio() {
-			delete this->source->data;
-			delete this->source;
 			alDeleteBuffers(1, &this->id);
 		}
 	}

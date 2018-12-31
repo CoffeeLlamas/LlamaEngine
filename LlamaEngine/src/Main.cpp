@@ -3,9 +3,7 @@
 #include <GLFW/glfw3.h>
 #include "graphics/Shader.hpp"
 #include "graphics/Window.hpp"
-#include "audio/AudioLoader.hpp"
-#include "audio/Audio.hpp"
-#include "audio/AudioSource.hpp"
+#include "audio/Common.hpp"
 
 int main() {
 	using namespace engine;
@@ -27,17 +25,15 @@ int main() {
 	Audio* audio = new Audio(audioSource);
 	AudioSource* audioSourcePlay = new AudioSource();
 	audioSourcePlay->play(audio);
+
 	while (!window->ShouldClose()) {
 		glClearColor(1, 1, 1, 1);
 		glClear(GL_COLOR_BUFFER_BIT);
-
-		
-
 		window->Update();
 	}
 	
-	delete audioSource;
 	delete audio;
+	delete audioSource; // Manually delete this just incase we use this source for multiple Audio* instances
 	delete audioSourcePlay;
 	delete(window);
 

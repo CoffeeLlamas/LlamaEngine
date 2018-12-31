@@ -10,6 +10,7 @@ namespace engine {
 			static ALCcontext* context;
 			unsigned int id;
 			AudioData* source;
+
 			static void init();
 			static void deinit();
 			Audio(AudioData* data);
